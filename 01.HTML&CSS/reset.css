@@ -1,0 +1,48 @@
+/* Reset básico basado en Normalize.css */
+
+/* Elimina el margen y padding predeterminado */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corrige la fuente en elementos del formulario en diferentes navegadores */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Asegura que los elementos multimedia sean responsivos */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Evita subrayados en enlaces sin estilo */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remueve estilos predeterminados de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Asegura que los elementos de tabla no tengan espacios innecesarios */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Elimina estilos predeterminados de encabezados y párrafos */
+h1, h2, h3, h4, h5, h6, p {
+    font-weight: normal;
+}
+
+/* Define una apariencia coherente en los botones */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
