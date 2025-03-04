@@ -1,40 +1,78 @@
 function checkLongitud(longitud) {
   /* TU CODIGO */
-
+  if (longitud === "" ) return "debe ingresar la longitud"
+   if (typeof longitud !== "string") return "La longitud recibida no es valida"
+   if (longitud < 3  ) return "La longitud debe ser mayor o igual a 3"
+   if (longitud > 10) return "La longitud debe ser menor o igual a 10"
+   return longitud
 }
 
 function generarContrasena(longitud, incluirEspeciales, incluirNumeros, incluirMayusculas ) {
   /* TU CODIGO */
-  var letras = null;
+  var letras = "abcdefghijklmnñopqrstuvwxyz";
 
-  var numeros = null;
+  var numeros = "0123456789";
 
-  var especiales = null;
+  var especiales =  "°|!%&/=?'¡¿*-+<@().,>";
 
-  var letrasMayusculas = null
+  var letrasMayusculas = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
-  var caracteresDisponibles = null;
+  var caracteresDisponibles = letras;
 
-  if () {
-      
-  }
+  if (incluirEspeciales === true) caracteresDisponibles += especiales
 
-  if () {
-      
-  }
+  if (incluirNumeros) caracteresDisponibles += numeros
 
-  if () {
-      
+  if (incluirMayusculas) caracteresDisponibles += mayusculas
 
-  }
+  var contrasena = "";
 
-  var contrasena = null;
+  if (longitud >= 3) {
 
-  if () {
+    var numeroAleatorio = Math.random()
+    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+    var sinDecimales = Math.floor(multilicacion) 
+    var caracter = caracteresDisponibles.charAt(sinDecimales)
+    contrasena += caracter
 
-  }
+    var numeroAleatorio = Math.random()
+    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+    var sinDecimales = Math.floor(multilicacion) 
+    var caracter = caracteresDisponibles.charAt(sinDecimales)
+    contrasena += caracter
 
-  return null;
+    var numeroAleatorio = Math.random()
+    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+    var sinDecimales = Math.floor(multilicacion) 
+    var caracter = caracteresDisponibles.charAt(sinDecimales)
+    contrasena += caracter
+   }
+
+   if (longitud >= 4){
+    var numeroAleatorio = Math.random()
+    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+    var sinDecimales = Math.floor(multilicacion) 
+    var caracter = caracteresDisponibles.charAt(sinDecimales)
+    contrasena += caracter
+   }
+
+   if (longitud >= 5){
+    var numeroAleatorio = Math.random()
+    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+    var sinDecimales = Math.floor(multilicacion) 
+    var caracter = caracteresDisponibles.charAt(sinDecimales)
+    contrasena += caracter
+   }
+
+   if (longitud >= 6){
+    var numeroAleatorio = Math.random()
+    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+    var sinDecimales = Math.floor(multilicacion) 
+    var caracter = caracteresDisponibles.charAt(sinDecimales)
+    contrasena += caracter
+   }
+
+   return "Contraseña generada: " + contrasena
 }
 
 // <------- NO TOCAR -------->
