@@ -27,50 +27,13 @@ function generarContrasena(longitud, incluirEspeciales, incluirNumeros, incluirM
 
   var contrasena = "";
 
-  if (longitud >= 3) {
-
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
-
-   if (longitud >= 4){
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
-
-   if (longitud >= 5){
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
-
-   if (longitud >= 6){
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
+  for(var i = 0; i < longitud; i++ ){
+        var numeroAleatorio = Math.random()
+        var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+        var sinDecimales = Math.floor(multilicacion) 
+        var caracter = caracteresDisponibles.charAt(sinDecimales)
+        contrasena += caracter
+  } 
 
    return "Contraseña generada: " + contrasena
 }

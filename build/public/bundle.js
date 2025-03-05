@@ -36,50 +36,13 @@ function generarContrasena(longitud, incluirEspeciales, incluirNumeros, incluirM
 
   var contrasena = "";
 
-  if (longitud >= 3) {
-
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
-
-   if (longitud >= 4){
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
-
-   if (longitud >= 5){
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
-
-   if (longitud >= 6){
-    var numeroAleatorio = Math.random()
-    var multilicacion = numeroAleatorio * caracteresDisponibles.length  
-    var sinDecimales = Math.floor(multilicacion) 
-    var caracter = caracteresDisponibles.charAt(sinDecimales)
-    contrasena += caracter
-   }
+  for(var i = 0; i < longitud; i++ ){
+        var numeroAleatorio = Math.random()
+        var multilicacion = numeroAleatorio * caracteresDisponibles.length  
+        var sinDecimales = Math.floor(multilicacion) 
+        var caracter = caracteresDisponibles.charAt(sinDecimales)
+        contrasena += caracter
+  } 
 
    return "Contraseña generada: " + contrasena
 }
@@ -99,14 +62,34 @@ module.exports = {
   \**************************************/
 /***/ ((module) => {
 
-function cajaFuerte(codigoSecreto, cantidadIntentos){
+function cajaFuerte(codigoSecreto, cantidadIntentos) {
   /* TU CODIGO */
+  if (codigoSecreto.length !== 4) return "El codigo debe tener exactamente 4 digitos"
   
+  for (var i = 0; i < codigoSecreto.length; i++) {
+    if (isNaN(codigoSecreto[i])) return "El codigo secreto solo puede estar conformado por numeros"
+        
+  }
+
+if(validarNumerosRepetidos(codigoSecreto)) return "el codigo no puede tener numeros repetidos"
+
+if (cantidadIntentos <= 0 || cantidadIntentos >= 6 ) return "Solo se permite una cantidad de intentos mayor a 0 y menor a 6"
+  return codigoSecreto.toString + cantidadIntentos.toString
+
 }
 
 function validarNumerosRepetidos(codigo){
   /* TU CODIGO */
   
+//   for(var i = 0; i < codigo.length; i++ ){
+//     for(var j = i+1; j < codigo.length; j++){
+//       if(codigo[i] === codigo[j]) return true
+//     }
+//   }
+// return false
+var set = new Set(codigo)
+if(codigo.length !== set.size) return true
+return false
 }
 
 // <------- Contador de intentos -----> no modificar
@@ -114,7 +97,32 @@ var contadorIntentos = 1
 
 function desbloquearCajaFuerte(codigoSecreto, cantidadIntentos, codigoDesbloqueo){
   /* TU CODIGO */
+  if (codigoDesbloqueo.length !== 4) return "El codigo debe tener exactamente 4 digitos"
   
+  for (var i = 0; i < codigoDesbloqueo.length; i++) {
+    if (isNaN(codigoDesbloqueo[i])) return "El codigo de desbloqueo solo puede estar conformado por numeros"  
+  }
+
+if(validarNumerosRepetidos(codigoDesbloqueo)) return "el codigo no puede tener numeros repetidos"
+
+if(codigoSecreto === codigoDesbloqueo) return "Acceso concedido despues de : " + contadorIntentos +" intentos"
+
+switch (true) {
+  case (codigoSecreto % 2 === 0):
+    console.log("el codigo es divisible x 2")
+        break;
+  case (codigoDesbloqueo > codigoSecreto):
+    console.log("Código incorrecto demasiado alto")
+      break;
+  default:
+    console.log("codigo incorrecto")
+    break;
+}
+
+contadorIntentos ++
+
+
+if(contadorIntentos > cantidadIntentos) return "Acceso denegado. Se agotaron los intentos"
 }
 
 // <------- NO TOCAR -------->
